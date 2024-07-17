@@ -6,6 +6,7 @@ from llama_index.llms.openai import OpenAI
 from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.core import Settings
 
+openai.api_key = st.secrets["secrets"]["OPENAI_API_KEY"]
 client = OpenAI(api_key=st.secrets["openai"]["api_key"])
 
 # Set LLM and embedding models
