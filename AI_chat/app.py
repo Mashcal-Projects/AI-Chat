@@ -6,8 +6,9 @@ from llama_index.llms.openai import OpenAI
 from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.core import Settings
 
+# Access OpenAI API key from Streamlit secrets
 openai.api_key = st.secrets["secrets"]["OPENAI_API_KEY"]
-client = OpenAI(api_key=st.secrets["secrets"]["OPENAI_API_KEY"])
+client = OpenAI(api_key= st.secrets["secrets"]["OPENAI_API_KEY"])
 
 # Set LLM and embedding models
 Settings.llm = OpenAI(model="gpt-4o")
