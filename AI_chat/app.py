@@ -108,7 +108,7 @@ if "messages" not in st.session_state:
 @st.cache_data(show_spinner=False)
 def load_data():
     docs = []
-    knowledge_center = pd.read_csv("data/knowledge_center.csv")
+    knowledge_center = pd.read_csv("AI_chat/data/knowledge_center.csv")
     for _, row in knowledge_center.iterrows():
         docs.append(Document(
             text=row['semanticsearch'],
