@@ -1,4 +1,5 @@
 import streamlit as st
+import openai 
 from openai import OpenAI
 import pandas as pd
 from llama_index.core import VectorStoreIndex, Document, StorageContext, load_index_from_storage
