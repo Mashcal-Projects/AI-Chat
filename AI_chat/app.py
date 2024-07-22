@@ -108,10 +108,11 @@ if "messages" not in st.session_state:
 @st.cache_data(show_spinner=False)
 def load_data():
     docs = []
-    knowledge_center = pd.read_csv("AI_chat/data/knowledge_center.csv")
+    knowledge_center = pd.read_csv("data/knowledge_center.csv")
     for _, row in knowledge_center.iterrows():
+        combined_text = f"{row['semanticsearch']} {row['TAGS']}"
         docs.append(Document(
-            text=row['semanticsearch'],
+            text=combined_text,
             doc_id=row['id'],
         ))
     index = VectorStoreIndex.from_documents(docs)
@@ -131,8 +132,8 @@ if "chat_engine" not in st.session_state:
 
 # Function to perform semantic search in the knowledge file
 def check_knowledge_center(question):
+    st.session_state.chat_engine.reset() 
     response = st.session_state.chat_engine.chat(question)
-    print("check_knowledge_center")
     print(response.response)
     return response.response
 
